@@ -34,6 +34,7 @@
     --toggle-bg-shadow3: #fff;
     --toggle-active-text: hsl(var(--primary));
     --toggle-inactive-text: hsl(var(--muted-foreground));
+    --radius: 1rem;
   }
 
   .dark {
@@ -64,6 +65,7 @@
     --toggle-bg-shadow3: #222;
     --toggle-active-text: hsl(var(--primary));
     --toggle-inactive-text: hsl(var(--muted-foreground));
+    --radius: 1rem;
   }
 }
 
