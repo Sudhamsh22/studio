@@ -47,7 +47,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <div id="stars3"></div>
       
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex flex-col w-72 border-r bg-card/50 p-6 gap-8">
+      <aside className="hidden md:flex flex-col w-20 hover:w-72 transition-all duration-300 ease-in-out group border-r bg-card/50 p-6 gap-8">
         <Logo />
         <MainNav />
         <div className="mt-auto">

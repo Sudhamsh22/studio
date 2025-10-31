@@ -15,6 +15,12 @@ import {
   FileCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
 
 const mainLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -58,7 +64,7 @@ export function MainNav({ isMobile = false, onLinkClick }: MainNavProps) {
                 onClick={handleLinkClick}
             >
                 <link.icon className="h-4 w-4" />
-                {link.label}
+                <span className="hidden group-hover:inline">{link.label}</span>
             </Link>
         ))}
       </>
@@ -67,7 +73,20 @@ export function MainNav({ isMobile = false, onLinkClick }: MainNavProps) {
   if (isMobile) {
       return (
           <nav className="grid gap-2 text-lg font-medium p-4">
-              {navLinks}
+              {mainLinks.map((link) => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                        "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted",
+                        pathname.startsWith(link.href) && "text-primary bg-muted"
+                    )}
+                    onClick={handleLinkClick}
+                >
+                    <link.icon className="h-4 w-4" />
+                    {link.label}
+                </Link>
+              ))}
                <div className="my-4 border-t border-border"></div>
                 {bottomLinks.map((link) => (
                     <Link
@@ -89,7 +108,28 @@ export function MainNav({ isMobile = false, onLinkClick }: MainNavProps) {
 
   return (
     <nav className="flex flex-col gap-2 text-sm font-medium w-full">
-      {navLinks}
+        <TooltipProvider>
+            {mainLinks.map((link) => (
+                <Tooltip key={link.href}>
+                    <TooltipTrigger asChild>
+                        <Link
+                            href={link.href}
+                            className={cn(
+                                "flex items-center justify-center lg:justify-start gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted",
+                                pathname.startsWith(link.href) && "text-primary bg-muted"
+                            )}
+                            onClick={handleLinkClick}
+                        >
+                            <link.icon className="h-5 w-5 shrink-0" />
+                            <span className="sr-only group-hover:not-sr-only group-hover:opacity-100 transition-opacity duration-200 delay-150">{link.label}</span>
+                        </Link>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="hidden group-hover:hidden">
+                        <p>{link.label}</p>
+                    </TooltipContent>
+                </Tooltip>
+            ))}
+        </TooltipProvider>
     </nav>
   );
 }
