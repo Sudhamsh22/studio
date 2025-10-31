@@ -1,3 +1,4 @@
+
 "use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -127,8 +128,8 @@ export default function ProjectsPage() {
 
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-8">
+    <div className="flex flex-col gap-4">
+      <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold font-headline tracking-tight">Project Management</h1>
         <div className="flex gap-2">
             <Dialog>
@@ -186,12 +187,12 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      <div className="flex gap-6 mb-8">
+      <div className="flex flex-col md:flex-row gap-6 mb-4">
         <ProjectCard project={mockProjects[0]} vmRunning={vmStates.p1} onToggleVm={() => handleToggleVm('p1')} progress={68} />
         <ProjectCard project={mockProjects[1]} vmRunning={vmStates.p2} onToggleVm={() => handleToggleVm('p2')} progress={84} />
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div>
             <div className="flex items-center gap-2 mb-4">
                 <h2 className="font-semibold text-lg">To Do</h2>
@@ -232,5 +233,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-
-    

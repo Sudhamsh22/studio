@@ -129,7 +129,7 @@ export default function PortfolioPage() {
 
 
   return (
-    <div className="container mx-auto p-4 space-y-8">
+    <div className="flex flex-col gap-8">
       {/* Header and Edit Toggle */}
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold font-headline tracking-tight">My Portfolio</h1>
@@ -457,5 +457,3 @@ export default function PortfolioPage() {
     </div>
   );
 }
-
-    
