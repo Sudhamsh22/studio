@@ -31,8 +31,19 @@ const bottomLinks = [
   { href: "/help", label: "Help & Support", icon: LifeBuoy },
 ];
 
-export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
+type MainNavProps = {
+  isMobile?: boolean;
+  onLinkClick?: () => void;
+};
+
+export function MainNav({ isMobile = false, onLinkClick }: MainNavProps) {
   const pathname = usePathname();
+
+  const handleLinkClick = () => {
+    if (onLinkClick) {
+      onLinkClick();
+    }
+  };
 
   const navLinks = (
       <>
@@ -44,6 +55,7 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                     "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted",
                     pathname.startsWith(link.href) && "text-primary bg-muted"
                 )}
+                onClick={handleLinkClick}
             >
                 <link.icon className="h-4 w-4" />
                 {link.label}
@@ -65,6 +77,7 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                             "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
                             pathname.startsWith(link.href) && "text-primary bg-muted"
                         )}
+                        onClick={handleLinkClick}
                     >
                         <link.icon className="h-4 w-4" />
                         {link.label}

@@ -10,11 +10,12 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { PanelLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { type FormEvent } from 'react';
+import { type FormEvent, useState } from 'react';
 import { ThemeToggle } from '@/components/app/theme-toggle';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,7 +60,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
           <div className="flex items-center gap-4">
              {/* Mobile Nav Trigger */}
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
@@ -76,7 +77,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     <Logo />
                   </div>
                   <div className="flex-1 overflow-y-auto">
-                    <MainNav isMobile={true} />
+                    <MainNav isMobile={true} onLinkClick={() => setIsMobileMenuOpen(false)} />
                   </div>
                 </div>
               </SheetContent>
