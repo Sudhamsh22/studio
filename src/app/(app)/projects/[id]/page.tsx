@@ -43,16 +43,16 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Task</TableHead>
-                                <TableHead>Assignee</TableHead>
-                                <TableHead>Due Date</TableHead>
-                                <TableHead className="w-[150px]">Status</TableHead>
+                                <TableHead className="hidden md:table-cell">Assignee</TableHead>
+                                <TableHead className="hidden md:table-cell">Due Date</TableHead>
+                                <TableHead>Status</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                             {project.tasks.map(task => (
                                 <TableRow key={task.id}>
                                     <TableCell className="font-medium">{task.title}</TableCell>
-                                    <TableCell>
+                                    <TableCell className="hidden md:table-cell">
                                         {task.assignee ? (
                                             <div className="flex items-center gap-2">
                                                 <Avatar className="h-6 w-6">
@@ -65,10 +65,10 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
                                             <span className="text-sm text-muted-foreground">Unassigned</span>
                                         )}
                                     </TableCell>
-                                    <TableCell>{task.dueDate}</TableCell>
+                                    <TableCell className="hidden md:table-cell">{task.dueDate}</TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-2">
-                                            <Progress value={statusToValue(task.status)} className="h-2"/>
+                                            <Progress value={statusToValue(task.status)} className="h-2 w-16 hidden sm:block"/>
                                             <span className="text-xs text-muted-foreground">{task.status}</span>
                                         </div>
                                     </TableCell>
@@ -131,3 +131,5 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
     </div>
   );
 }
+
+    
