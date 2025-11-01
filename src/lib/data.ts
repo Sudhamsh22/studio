@@ -1,3 +1,4 @@
+
 import type { User, Project, Activity, Task, Portfolio } from "./types";
 
 export const mockUsers: User[] = [
@@ -148,5 +149,14 @@ export const mockPortfolio: Portfolio = {
             title: "Cloud DevOps Pathway",
             description: "Your skills in Docker and interest in AI make you a great fit for a DevOps role focusing on MLOps."
         }
+    },
+    roleSpecific: {
+      university: "State University",
+      major: "Computer Science",
+      graduationYear: "2025",
+      experience: "3-5 years",
+      methodologies: "Scrum, Kanban",
+      teamSize: "8",
+      department: "Engineering"
     }
   };

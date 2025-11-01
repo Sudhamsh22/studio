@@ -104,7 +104,17 @@ export type Portfolio = {
             title: string,
             description: string;
         }
+    },
+    roleSpecific: {
+      // Student
+      university?: string;
+      major?: string;
+      graduationYear?: string;
+      // Project Manager
+      experience?: string;
+      methodologies?: string;
+      teamSize?: string;
+      // Admin
+      department?: string;
     }
   };
-
-    

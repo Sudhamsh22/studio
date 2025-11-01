@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -46,6 +46,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import type { Portfolio } from "@/lib/types";
+import { useSearchParams } from "next/navigation";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 
 const skillProficiency = [
@@ -74,10 +76,13 @@ const gamificationBadges = [
 
 export default function PortfolioPage() {
   const { toast } = useToast();
+  const searchParams = useSearchParams();
   const [isEditMode, setIsEditMode] = useState(false);
   const [portfolioData, setPortfolioData] = useState<Portfolio>(initialPortfolio);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const role = useMemo(() => searchParams.get('role') || 'student', [searchParams]);
+  
   const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar-main');
   const projectThumbnail = PlaceHolderImages.find(p => p.id === 'project-thumbnail-1');
 
@@ -86,7 +91,7 @@ export default function PortfolioPage() {
         const sectionData = prev[section];
         const keys = field.split('.');
         if (keys.length > 1) {
-            // Handle nested objects like contact.email
+            // Handle nested objects like contact.email or roleSpecific.university
             let currentLevel: any = sectionData;
             for (let i = 0; i < keys.length - 1; i++) {
                 currentLevel = currentLevel[keys[i]];
@@ -100,8 +105,6 @@ export default function PortfolioPage() {
   };
 
   const handleSaveChanges = () => {
-    // In a real app, you would save this data to a backend.
-    // For this demo, we'll just show a toast notification.
     toast({
       title: "Portfolio Saved!",
       description: "Your changes have been successfully saved.",
@@ -126,6 +129,85 @@ export default function PortfolioPage() {
       reader.readAsDataURL(file);
     }
   };
+
+  const RoleSpecificProfile = () => {
+    if (isEditMode) {
+      switch (role) {
+        case 'pm':
+          return (
+            <>
+              <div className="space-y-1">
+                <Label>Years of Experience</Label>
+                <Select value={portfolioData.roleSpecific.experience} onValueChange={value => handleInputChange('roleSpecific', 'experience', value)}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="0-2 years">0-2 years</SelectItem>
+                        <SelectItem value="3-5 years">3-5 years</SelectItem>
+                        <SelectItem value="5+ years">5+ years</SelectItem>
+                    </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-1">
+                <Label>Agile Methodologies</Label>
+                <Input value={portfolioData.roleSpecific.methodologies} onChange={e => handleInputChange('roleSpecific', 'methodologies', e.target.value)} />
+              </div>
+              <div className="space-y-1">
+                <Label>Largest Team Managed</Label>
+                <Input type="number" value={portfolioData.roleSpecific.teamSize} onChange={e => handleInputChange('roleSpecific', 'teamSize', e.target.value)} />
+              </div>
+            </>
+          );
+        case 'admin':
+          return (
+            <div className="space-y-1">
+              <Label>Department</Label>
+              <Input value={portfolioData.roleSpecific.department} onChange={e => handleInputChange('roleSpecific', 'department', e.target.value)} />
+            </div>
+          );
+        case 'student':
+        default:
+          return (
+            <>
+              <div className="space-y-1">
+                <Label>University</Label>
+                <Input value={portfolioData.roleSpecific.university} onChange={e => handleInputChange('roleSpecific', 'university', e.target.value)} />
+              </div>
+              <div className="space-y-1">
+                <Label>Major</Label>
+                <Input value={portfolioData.roleSpecific.major} onChange={e => handleInputChange('roleSpecific', 'major', e.target.value)} />
+              </div>
+              <div className="space-y-1">
+                <Label>Graduation Year</Label>
+                <Input type="number" value={portfolioData.roleSpecific.graduationYear} onChange={e => handleInputChange('roleSpecific', 'graduationYear', e.target.value)} />
+              </div>
+            </>
+          );
+      }
+    }
+
+    // View mode
+    switch (role) {
+      case 'pm':
+        return (
+          <>
+            <p><span className="font-semibold">Experience:</span> {portfolioData.roleSpecific.experience}</p>
+            <p><span className="font-semibold">Methodologies:</span> {portfolioData.roleSpecific.methodologies}</p>
+            <p><span className="font-semibold">Largest Team:</span> {portfolioData.roleSpecific.teamSize} members</p>
+          </>
+        );
+      case 'admin':
+        return <p><span className="font-semibold">Department:</span> {portfolioData.roleSpecific.department}</p>;
+      case 'student':
+      default:
+        return (
+          <>
+            <p><span className="font-semibold">University:</span> {portfolioData.roleSpecific.university}</p>
+            <p><span className="font-semibold">Major:</span> {portfolioData.roleSpecific.major}</p>
+            <p><span className="font-semibold">Graduation:</span> {portfolioData.roleSpecific.graduationYear}</p>
+          </>
+        );
+    }
+  }
 
 
   return (
@@ -269,54 +351,12 @@ export default function PortfolioPage() {
                 </CardContent>
             </Card>
 
-             {/* Mentorship & Feedback */}
             <Card>
                 <CardHeader>
-                    <CardTitle>Mentorship & Feedback</CardTitle>
+                    <CardTitle>Profile Information</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                     {portfolioData.mentorship.latestComments.map((comment, i) => (
-                        <div key={i} className="text-sm">
-                            <p className="italic text-muted-foreground">&quot;{comment.comment}&quot;</p>
-                            <p className="text-right font-medium">- {comment.mentor}</p>
-                        </div>
-                     ))}
-                      <Separator/>
-                      <div>
-                        <h4 className="font-semibold mb-2">AI Summary</h4>
-                        <p className="text-sm"><span className="font-medium">Strengths:</span> {portfolioData.mentorship.aiSummary.strengths}</p>
-                        <p className="text-sm"><span className="font-medium">Improvements:</span> {portfolioData.mentorship.aiSummary.improvements}</p>
-                      </div>
-                </CardContent>
-            </Card>
-
-             {/* Future Goals */}
-            <Card>
-                <CardHeader>
-                    <CardTitle>Future Goals</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                    <div>
-                        <h4 className="font-semibold">Career Goals</h4>
-                         {isEditMode ? (
-                            <Textarea
-                                value={portfolioData.futureGoals.careerGoals}
-                                onChange={(e) => handleInputChange('futureGoals', 'careerGoals', e.target.value)}
-                                rows={3}
-                            />
-                        ) : (
-                           <p className="text-sm text-muted-foreground">{portfolioData.futureGoals.careerGoals}</p>
-                        )}
-                    </div>
-                    <Card className="bg-primary/10 border-primary">
-                        <CardHeader>
-                            <CardTitle className="text-base">AI Career Recommendation</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-sm font-medium">{portfolioData.futureGoals.aiRecommendation.title}</p>
-                            <p className="text-sm text-muted-foreground">{portfolioData.futureGoals.aiRecommendation.description}</p>
-                        </CardContent>
-                    </Card>
+                <CardContent className="space-y-4 text-sm">
+                    <RoleSpecificProfile />
                 </CardContent>
             </Card>
         </div>
@@ -457,5 +497,3 @@ export default function PortfolioPage() {
     </div>
   );
 }
-
-    
