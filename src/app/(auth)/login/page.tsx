@@ -1,6 +1,6 @@
 
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './../auth.css';
 import { useRouter } from 'next/navigation';
 
@@ -8,12 +8,15 @@ export default function AuthUI() {
   const router = useRouter();
   const isClient = typeof window !== 'undefined';
 
+  const [selectedRole, setSelectedRole] = useState('student');
+
   const switchCtnRef = useRef<HTMLDivElement>(null);
   const switchC1Ref = useRef<HTMLDivElement>(null);
   const switchC2Ref = useRef<HTMLDivElement>(null);
   const switchCircleRefs = useRef<HTMLDivElement[]>([]);
   const aContainerRef = useRef<HTMLDivElement>(null);
   const bContainerRef = useRef<HTMLDivElement>(null);
+  const aFormRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!isClient) return;
@@ -25,8 +28,8 @@ export default function AuthUI() {
     const aContainer = aContainerRef.current;
     const bContainer = bContainerRef.current;
 
-    const allButtons = document.querySelectorAll('.auth-button.submit');
-    const switchBtns = document.querySelectorAll('.switch-btn');
+    const allButtons = Array.from(document.querySelectorAll('.auth-button.submit'));
+    const switchBtns = Array.from(document.querySelectorAll('.switch-btn'));
 
     if (
       !switchCtn ||
@@ -40,9 +43,21 @@ export default function AuthUI() {
 
     const getButtons = (e: Event) => {
         e.preventDefault();
-        // In a real app, you'd have auth logic here.
-        // For now, just redirect to dashboard.
-        router.push('/dashboard');
+        const target = e.target as HTMLElement;
+        const form = target.closest('form');
+        let role = 'student';
+        if (form && form.id === 'a-form') {
+           const roleSelect = form.querySelector('select');
+           if (roleSelect) {
+             role = roleSelect.value;
+           }
+        } else {
+            // For sign-in, we don't know the role, so we'll default or have logic to retrieve it
+            // For this demo, let's just use a default
+             role = 'student';
+        }
+
+        router.push(`/dashboard?role=${role}`);
     }
 
     const changeForm = () => {
@@ -101,7 +116,7 @@ export default function AuthUI() {
         id="a-container"
         ref={aContainerRef}
       >
-        <form id="a-form" className="auth-form">
+        <form id="a-form" className="auth-form" ref={aFormRef}>
           <h2 className="auth-form_title auth-title">Create Account</h2>
           <div className="form__icons">
             <img
@@ -126,8 +141,12 @@ export default function AuthUI() {
             type="password"
             placeholder="Password"
           />
-          <select className="auth-form__input">
-            <option value="" disabled selected>Select Role</option>
+          <select 
+            className="auth-form__input"
+            value={selectedRole}
+            onChange={(e) => setSelectedRole(e.target.value)}
+            name="role"
+          >
             <option value="student">Student</option>
             <option value="pm">Project Manager</option>
             <option value="admin">Admin</option>
