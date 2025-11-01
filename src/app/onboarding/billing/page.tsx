@@ -42,11 +42,11 @@ function BillingContent() {
 
     const handleSelectRole = (roleName: string) => {
         toast({
-            title: "Plan Selected!",
-            description: `You've chosen the ${roleName} track. Let's complete your profile.`,
+            title: "Plan Selected! Welcome aboard!",
+            description: `You've chosen the ${roleName} track. Welcome to VirtualInternPro!`,
         });
-        const role = searchParams.get('role') || roleName.toLowerCase().replace(' ', '');
-        router.push(`/onboarding/complete-profile?role=${role}`);
+        const role = searchParams.get('role') || roleName.toLowerCase().replace(/[^a-z]/g, '');
+        router.push(`/dashboard?role=${role}`);
     }
 
   return (

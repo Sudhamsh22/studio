@@ -9,6 +9,7 @@ export default function AuthUI() {
   const isClient = typeof window !== 'undefined';
 
   const [selectedRole, setSelectedRole] = useState('student');
+  const [isSigningUp, setIsSigningUp] = useState(false);
 
   const switchCtnRef = useRef<HTMLDivElement>(null);
   const switchC1Ref = useRef<HTMLDivElement>(null);
@@ -16,7 +17,6 @@ export default function AuthUI() {
   const switchCircleRefs = useRef<HTMLDivElement[]>([]);
   const aContainerRef = useRef<HTMLDivElement>(null);
   const bContainerRef = useRef<HTMLDivElement>(null);
-  const aFormRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!isClient) return;
@@ -41,26 +41,31 @@ export default function AuthUI() {
       return;
     }
 
-    const getButtons = (e: Event) => {
+    const handleAuthAction = (e: Event) => {
         e.preventDefault();
         const target = e.target as HTMLElement;
         const form = target.closest('form');
-        let role = 'student';
-        if (form && form.id === 'a-form') {
-           const roleSelect = form.querySelector('select');
-           if (roleSelect) {
-             role = roleSelect.value;
-           }
-        } else {
-            // For sign-in, we don't know the role, so we'll default or have logic to retrieve it
-            // For this demo, let's just use a default
-             role = 'student';
+        
+        if (form?.id === 'a-form') { // Signup
+          router.push(`/onboarding/complete-profile?role=${selectedRole}`);
+        } else { // Signin
+          // A simple way to get a role for sign-in demo. In a real app, this would come from the user's session.
+          const emailInput = form?.querySelector('input[type="text"]') as HTMLInputElement;
+          let role = 'student';
+          if (emailInput && emailInput.value.includes('pm')) role = 'pm';
+          if (emailInput && emailInput.value.includes('admin')) role = 'admin';
+          router.push(`/dashboard?role=${role}`);
         }
-
-        router.push(`/dashboard?role=${role}`);
     }
 
-    const changeForm = () => {
+    const changeForm = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target.textContent?.includes('SIGN UP')) {
+        setIsSigningUp(true);
+      } else {
+        setIsSigningUp(false);
+      }
+
       switchCtn.classList.add('is-gx');
       setTimeout(function () {
         switchCtn.classList.remove('is-gx');
@@ -79,7 +84,7 @@ export default function AuthUI() {
 
     const mainF = () => {
       allButtons.forEach((button) => {
-        button.addEventListener('click', getButtons);
+        button.addEventListener('click', handleAuthAction);
       });
       switchBtns.forEach((btn) => {
         btn.addEventListener('click', changeForm);
@@ -94,13 +99,13 @@ export default function AuthUI() {
     return () => {
       document.body.classList.remove('auth-body');
        allButtons.forEach((button) => {
-        button.removeEventListener('click', getButtons);
+        button.removeEventListener('click', handleAuthAction);
       });
       switchBtns.forEach((btn) => {
         btn.removeEventListener('click', changeForm);
       });
     };
-  }, [isClient, router]);
+  }, [isClient, router, selectedRole]);
 
   const addSwitchCircleRef = (el: HTMLDivElement) => {
     if (el && !switchCircleRefs.current.includes(el)) {
@@ -116,7 +121,7 @@ export default function AuthUI() {
         id="a-container"
         ref={aContainerRef}
       >
-        <form id="a-form" className="auth-form" ref={aFormRef}>
+        <form id="a-form" className="auth-form">
           <h2 className="auth-form_title auth-title">Create Account</h2>
           <div className="form__icons">
             <img

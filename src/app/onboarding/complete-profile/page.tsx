@@ -59,9 +59,9 @@ function CompleteProfileForm() {
         console.log(values);
         toast({
         title: "Profile Complete!",
-        description: "Welcome to VirtualInternPro! You're all set.",
+        description: "Next, let's assess your skills to find the perfect internship.",
         });
-        router.push(`/dashboard?role=${role}`);
+        router.push(`/onboarding/skill-assessment?role=${role}`);
     }
 
     const renderStudentFields = () => (
@@ -169,7 +169,7 @@ function CompleteProfileForm() {
             <CardFooter>
               <Button type="submit" className="w-full">
                 <User className="mr-2 h-4 w-4" />
-                Finish Setup
+                Continue to Skill Assessment
               </Button>
             </CardFooter>
           </form>
