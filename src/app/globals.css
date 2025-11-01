@@ -10,7 +10,7 @@
     --card-foreground: 224 71% 4%; /* #111827 */
     --popover: 0 0% 100%;
     --popover-foreground: 224 71% 4%;
-    --primary: 221 83% 53%; /* #2563EB */
+    --primary: 240 10% 3.9%; /* #000000 */
     --primary-foreground: 210 40% 98%;
     --secondary: 145 63% 49%; /* #22C55E */
     --secondary-foreground: 210 40% 98%;
@@ -44,9 +44,9 @@
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 145 63% 49%;
+    --primary: 240 10% 3.9%; /* #000000 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 10% 3.9%; /* #000000 */
     --secondary-foreground: 210 40% 98%;
     --muted: 217 32% 17%;
     --muted-foreground: 215 20% 65%;
@@ -169,7 +169,7 @@
 
 @layer components {
   /* =====================================================
-    Text Toggle Styles
+    Theme Toggle Styles
    ===================================================== */
   .toggle {
     display: block;
@@ -192,20 +192,15 @@
   .toggle--checkbox {
     transition: all 250ms ease-in;
   }
-  .toggle--btn:before,
-  .toggle--btn:after {
+  .toggle--btn .toggle-icon {
     transition: all 250ms ease-in;
-    content: '';
-    display: block;
+    pointer-events: none;
   }
-
+  
   .toggle--text .toggle--btn {
     position: relative;
     width: 100px;
     height: 40px;
-    font-family: 'Source Sans Pro', Sans Serif;
-    text-transform: uppercase;
-    font-weight: bold;
     border-radius: 40px;
     border: 1px solid var(--toggle-border-color);
     box-shadow:
@@ -214,30 +209,31 @@
        inset -2px 2px 4px rgba(0,0,0,0.2),
        inset 2px -2px 4px rgba(255,255,255,0.8);
   }
-  .toggle--text .toggle--btn:before,
-  .toggle--text .toggle--btn:after {
+  
+  .toggle--text .toggle-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 50%;
     text-align: center;
   }
-  .toggle--text .toggle--btn:before {
-    content: attr(data-label-off);
+  
+  .toggle--text .sun {
     left: 0;
-    color: var(--toggle-active-text);
-  }
-  .toggle--text .toggle--btn:after {
-    content: attr(data-label-on);
-    right: 0;
     color: var(--toggle-inactive-text);
   }
   
-  .toggle--checkbox:checked + .toggle--btn:before {
-    color: var(--toggle-inactive-text);
-  }
-  .toggle--checkbox:checked + .toggle--btn:after {
+  .toggle--text .moon {
+    right: 0;
     color: var(--toggle-active-text);
+  }
+  
+  .toggle--checkbox:checked + .toggle--btn .sun {
+    color: var(--toggle-active-text);
+  }
+  
+  .toggle--checkbox:checked + .toggle--btn .moon {
+    color: var(--toggle-inactive-text);
   }
 
   .toggle--checkbox:checked + .toggle--btn {

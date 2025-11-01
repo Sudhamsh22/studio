@@ -2,6 +2,8 @@
 
 import { useTheme } from "next-themes"
 import React from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -22,12 +24,13 @@ export function ThemeToggle() {
         className="toggle--checkbox"
         checked={isChecked}
         onChange={handleToggle}
+        aria-label="Toggle theme"
       />
       <label 
         className="toggle--btn" 
-        htmlFor="theme-toggle" 
-        data-label-on="Dark"  
-        data-label-off="Light">
+        htmlFor="theme-toggle">
+          <Sun className="toggle-icon sun" />
+          <Moon className="toggle-icon moon" />
       </label>
     </div>
   )
