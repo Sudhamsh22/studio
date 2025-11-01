@@ -83,7 +83,7 @@ export function StudentDashboard() {
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center gap-4">
             <CircularProgress value={75} label="Completed" />
-            <Button variant="default" className="w-full">View Details</Button>
+            <Button variant="outline" className="w-full">View Details</Button>
           </CardContent>
         </Card>
 
@@ -95,7 +95,7 @@ export function StudentDashboard() {
                 <div className="flex items-center gap-3">
                     <ClipboardList className="h-6 w-6 text-muted-foreground" />
                     <div>
-                        <p className="font-semibold">1/4 Tasks Completed</p>
+                        <p className="font-semibold">14 Tasks Completed</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-3">

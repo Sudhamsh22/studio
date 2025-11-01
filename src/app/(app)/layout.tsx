@@ -44,17 +44,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen w-full overflow-hidden">
       
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex flex-col w-20 hover:w-72 transition-all duration-300 ease-in-out group border-r bg-card/50 backdrop-blur-sm p-6 gap-8">
+      <aside className="hidden md:flex flex-col w-20 hover:w-64 transition-all duration-300 ease-in-out group border-r bg-card/50 p-4 gap-8">
         <Logo />
         <MainNav />
-        <div className="mt-auto">
-          {/* Future sidebar footer content can go here */}
-        </div>
       </aside>
 
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Main Header */}
-        <header className="flex-shrink-0 flex h-16 items-center justify-between gap-4 border-b bg-card/50 px-4 backdrop-blur-sm md:px-6 z-40">
+        <header className="flex-shrink-0 flex h-16 items-center justify-between gap-4 border-b bg-card/50 px-4 md:px-6 z-40">
           <div className="flex items-center gap-4">
              {/* Mobile Nav Trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
