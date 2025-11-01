@@ -25,7 +25,7 @@ export type SearchInput = z.infer<typeof SearchInputSchema>;
 
 const SearchResultSchema = z.object({
   id: z.number(),
-  type: z.enum(['Document', 'Project', 'Chat', 'Ticket']),
+  type: z.enum(['Document', 'Project']),
   title: z.string(),
   path: z.string(),
 });
@@ -50,18 +50,6 @@ const mockData = [
     type: 'Project' as const,
     title: 'E-Learning Platform',
     path: '/projects/p1',
-  },
-  {
-    id: 3,
-    type: 'Chat' as const,
-    title: '#development channel',
-    path: '/chats',
-  },
-  {
-    id: 4,
-    type: 'Ticket' as const,
-    title: 'Login page not responsive',
-    path: '/tickets',
   },
   {
     id: 5,

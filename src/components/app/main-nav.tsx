@@ -9,9 +9,7 @@ import {
   Users,
   BarChart3,
   LifeBuoy,
-  MessageSquare,
   FileText,
-  Ticket,
   FileCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -26,10 +24,8 @@ const mainLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/projects", label: "Projects", icon: FolderKanban },
   { href: "/documents", label: "Documents", icon: FileText },
-  { href: "/chats", label: "Chats", icon: MessageSquare },
   { href: "/mentorship", label: "Mentorship", icon: Users },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/tickets", label: "Tickets", icon: Ticket },
   { href: "/portfolio", label: "Portfolio", icon: FileCode },
 ];
 
