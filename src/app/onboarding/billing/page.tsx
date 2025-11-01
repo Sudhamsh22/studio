@@ -11,25 +11,25 @@ import { Suspense } from "react";
 const roles = [
   {
     name: "Developer",
-    price: "$199",
+    price: "₹15,999",
     features: ["Hands-on coding tasks", "Real-world project", "Code reviews", "Technical mentorship"],
     popular: false,
   },
   {
     name: "Project Manager",
-    price: "$249",
+    price: "₹19,999",
     features: ["Lead a team of interns", "JIRA-style task management", "Agile methodologies", "Leadership mentorship"],
     popular: true,
   },
   {
     name: "Tester / QA",
-    price: "$179",
+    price: "₹14,499",
     features: ["Manual and automated testing", "Bug tracking and reporting", "CI/CD pipeline integration", "QA best practices"],
     popular: false,
   },
   {
     name: "DevOps",
-    price: "$229",
+    price: "₹18,499",
     features: ["Manage infrastructure", "CI/CD pipeline setup", "Cloud services (GCP/AWS)", "Infrastructure as Code"],
     popular: false,
   },
