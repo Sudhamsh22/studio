@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -38,12 +39,12 @@ export default function SkillAssessmentPage() {
     try {
       const result = await adaptiveSkillAssessment(values);
       // In a real app, you'd save this and redirect to a recommendations page.
-      // For now, we'll show a toast and redirect to the dashboard.
+      // For now, we'll show a toast and redirect to the billing page.
       toast({
         title: "Assessment Complete!",
-        description: `Recommended Role: ${result.recommendedRoles.split(',')[0]}. Check your dashboard for more.`,
+        description: `Recommended Role: ${result.recommendedRoles.split(',')[0]}. Next, let's set up your internship plan.`,
       });
-      router.push("/dashboard");
+      router.push("/onboarding/billing");
     } catch (error) {
       console.error("Skill assessment failed:", error);
       toast({
