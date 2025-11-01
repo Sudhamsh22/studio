@@ -126,6 +126,12 @@ export default function AuthUI() {
             type="password"
             placeholder="Password"
           />
+          <select className="auth-form__input">
+            <option value="" disabled selected>Select Role</option>
+            <option value="student">Student</option>
+            <option value="pm">Project Manager</option>
+            <option value="admin">Admin</option>
+          </select>
           <button className="auth-form__button auth-button submit">SIGN UP</button>
         </form>
       </div>

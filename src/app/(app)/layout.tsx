@@ -42,9 +42,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
       
       {/* Sidebar for Desktop */}
       <aside className="hidden md:flex flex-col w-20 hover:w-72 transition-all duration-300 ease-in-out group border-r bg-card/50 backdrop-blur-sm p-6 gap-8">
