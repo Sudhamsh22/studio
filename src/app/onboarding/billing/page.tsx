@@ -1,11 +1,12 @@
 
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Suspense } from "react";
 
 const roles = [
   {
@@ -34,18 +35,18 @@ const roles = [
   },
 ];
 
-export default function BillingPage() {
+function BillingContent() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const { toast } = useToast();
 
     const handleSelectRole = (roleName: string) => {
-        // In a real app, this would handle the payment flow.
-        // For now, we'll just show a toast and redirect to the dashboard.
         toast({
-            title: "Welcome Aboard!",
-            description: `You have successfully enrolled as a ${roleName}.`,
+            title: "Plan Selected!",
+            description: `You've chosen the ${roleName} track. Let's complete your profile.`,
         });
-        router.push("/dashboard");
+        const role = searchParams.get('role') || roleName.toLowerCase().replace(' ', '');
+        router.push(`/onboarding/complete-profile?role=${role}`);
     }
 
   return (
@@ -91,11 +92,19 @@ export default function BillingPage() {
                 ))}
             </div>
              <div className="text-center mt-4">
-                <Button variant="link" onClick={() => router.push("/dashboard")}>
+                <Button variant="link" onClick={() => router.push(`/dashboard?role=${searchParams.get('role') || 'student'}`)}>
                     Skip for now &rarr;
                 </Button>
             </div>
         </div>
     </div>
   );
+}
+
+export default function BillingPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <BillingContent />
+        </Suspense>
+    )
 }
