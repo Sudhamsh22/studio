@@ -4,12 +4,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowDown } from 'lucide-react';
 import Image from 'next/image';
-import Hyperspeed, { hyperspeedPresets } from '@/app/components/hyperspeed';
 
 export function Hero({ id }: { id: string }) {
   return (
     <section id={id} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <Hyperspeed effectOptions={hyperspeedPresets.one} />
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-transparent"></div>
 
         <div className="relative z-10 flex flex-col items-center">

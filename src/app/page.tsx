@@ -9,10 +9,12 @@ import { Leadership } from '@/app/components/sections/leadership';
 import { Achievements } from '@/app/components/sections/achievements';
 import { Contact } from '@/app/components/sections/contact';
 import { Footer } from '@/app/components/footer';
+import Hyperspeed, { hyperspeedPresets } from '@/app/components/hyperspeed';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Hyperspeed effectOptions={hyperspeedPresets.one} />
       <Header />
       <main className="flex-grow">
         <Hero id="home" />
