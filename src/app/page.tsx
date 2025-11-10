@@ -7,7 +7,6 @@ import { Projects } from '@/app/components/sections/projects';
 import { Certifications } from '@/app/components/sections/certifications';
 import { Leadership } from '@/app/components/sections/leadership';
 import { Achievements } from '@/app/components/sections/achievements';
-import { AtsOptimizer } from '@/app/components/sections/ats-optimizer';
 import { Contact } from '@/app/components/sections/contact';
 import { Footer } from '@/app/components/footer';
 
@@ -24,7 +23,6 @@ export default function Home() {
         <Certifications id="certifications" />
         <Leadership id="leadership" />
         <Achievements id="achievements" />
-        <AtsOptimizer id="ats-optimizer" />
         <Contact id="contact" />
       </main>
       <Footer />

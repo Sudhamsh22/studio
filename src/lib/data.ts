@@ -61,7 +61,6 @@ export const navigation = [
   { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
-  { name: 'AI Optimizer', href: '#ats-optimizer' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -218,58 +217,3 @@ export const achievements = [
   'Organized a national-level hackathon with 200+ participants and sponsors.',
   'Recognized for mentorship and student technical development at GRIET.',
 ];
-
-export const fullResumeContent = `
-Siva Sudhamsh Gandikota
-Madhapur, Hyderabad 500081 | Phone: +91 96407 62129
-Email: sivasudhamsh2005@gmail.com | LinkedIn: linkedin.com/in/sivasudhamsh | GitHub: github.com/Sudhamsh22
-
-Summary
-Applied-AI focused Software Engineer with strengths in backend, AI/ML, and full-stack development. Build pragmatic AI-driven features and data-based web apps using Python (FastAPI), JavaScript/TypeScript (Node.js/Next.js), and cloud (Azure/AWS). Experienced with Machine Learning, LLM-based features, authentication/authorization (JWT), RESTful APIs, microservices, CI/CD, and performance optimization. Seeking roles where AI enhances reliable, scalable software.
-
-Skills
-Languages: Python, JavaScript, TypeScript, Java, C, C++
-Backend/Frameworks: FastAPI, Express.js, Node.js, RESTful APIs, Microservices, JWT, Flask (basic)
-AI/ML: Machine Learning, LLMs, Data Pipelines
-Frontend: React.js, Next.js, Redux, Tailwind CSS
-Databases: PostgreSQL, MySQL, MongoDB, Redis
-Cloud & DevOps: Azure, AWS, Docker, Linux, Git, GitHub Actions, CI/CD, Postman
-Practices: Agile/Scrum, Unit Testing, Code Reviews, DSA
-
-Experience
-Summer AI Intern — Vishwam AI (Swecha, Open-Source NGO) | Jun 2024 – Present
-- Trained and fine-tuned ML models on curated datasets, improving validation accuracy by ~8–12% through standardized preprocessing and evaluation.
-- Implemented data pipelines, versioning, and experiment tracking for reproducibility and faster iteration in Agile/Scrum cycles.
-- Contributed to AI feature development using LLM-based components, code reviews, and CI/CD pipelines for reliable deployments.
-
-Projects
-Virtual Intern Pro — Ed-Tech Internship Platform (Freelance)
-- Built and deployed a production-ready platform using Next.js, Tailwind CSS, and Vercel; reduced page-load time by ~35% via performance improvements.
-- Implemented secure auth and role-based dashboards to streamline user flows and reliability.
-- Tech Stack: Next.js, Tailwind CSS, Node.js, Vercel, JWT
-
-Gov Connect — Unified Government Services
-- Developed a full-stack platform centralizing 50+ services across 25+ departments with a unified interface and JWT-based access control.
-- Designed RESTful endpoints and integrated database operations for reliable, scalable workflows.
-- Tech Stack: React, Express.js, Node.js, MongoDB, JWT
-
-Mana-Sambaralu — Cultural Tourism
-- Built a community platform featuring 30+ festivals; added secure submissions and moderation with a FastAPI backend.
-- Enhanced UI/UX with Streamlit components to increase engagement and time-on-page.
-- Tech Stack: Python, FastAPI, Streamlit, HTML/CSS
-
-Certifications
-- Oracle: AI Vector Search Certification
-- Microsoft: Azure Fundamentals (AZ-900)
-- IEEE: AI & Big Data Certification
-- HackerRank: Python, React, Problem Solving
-
-Leadership & Activities
-Vice-President & PR — Free Software Wing, GRIET | Aug 2024 – Present
-- Led a team to host a 24-hour hackathon with 200+ participants; secured sponsorships and coordinated cross-functional logistics.
-- Conducted workshops for 200+ students on web development and AI fundamentals; mentored project teams.
-
-Achievements
-- Organized a national-level hackathon with 200+ participants and sponsors.
-- Recognized for mentorship and student technical development at GRIET.
-`;
