@@ -10,23 +10,28 @@ export function Hero({ id }: { id: string }) {
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-background"></div>
 
         <div className="relative z-10 flex flex-col items-center">
-              <div className="mb-8">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="text-center md:text-left">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-primary to-accent">
+                    {personalInfo.name}
+                </h1>
+                <p className="mt-4 max-w-2xl text-xl md:text-2xl text-foreground/80 font-headline">
+                    {personalInfo.tagline}
+                </p>
+              </div>
+              <div className="flex-shrink-0">
                 <Image
                   src="/my-photo.jpg"
                   alt="Siva Sudhamsh Gandikota"
-                  width={160}
-                  height={160}
-                  className="rounded-full border-4 border-primary/50 object-cover shadow-lg"
+                  width={200}
+                  height={200}
+                  className="rounded-xl border-4 border-primary/20 object-cover shadow-lg"
                   priority
                 />
               </div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-primary to-accent">
-                {personalInfo.name}
-            </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-foreground/80 font-headline">
-                {personalInfo.tagline}
-            </p>
-            <p className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-foreground/60">
+            </div>
+
+            <p className="mt-8 max-w-3xl mx-auto text-base md:text-lg text-foreground/60 text-center">
                 {personalInfo.summary}
             </p>
             <div className="mt-8 flex justify-center gap-4">
