@@ -92,7 +92,7 @@ export const LinuxIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const GitIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a10 10 0 110-20 10 10 0 010 20z"/><path dM="M12 8v8m-4-4h8"/></svg>
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a10 10 0 110-20 10 10 0 010 20z"/><path d="M12 8v8m-4-4h8"/></svg>
 );
 
 export const GitHubActionsIcon = (props: SVGProps<SVGSVGElement>) => (
