@@ -2,13 +2,29 @@ import { personalInfo } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowDown } from 'lucide-react';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero({ id }: { id: string }) {
+  const profileImage = PlaceHolderImages.find(p => p.id === 'profile-picture');
   return (
     <section id={id} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-background"></div>
 
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col items-center">
+            {profileImage && (
+              <div className="mb-8">
+                <Image
+                  src={profileImage.imageUrl}
+                  alt="Siva Sudhamsh Gandikota"
+                  width={160}
+                  height={160}
+                  className="rounded-full border-4 border-primary/50 object-cover shadow-lg"
+                  priority
+                  data-ai-hint={profileImage.imageHint}
+                />
+              </div>
+            )}
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-primary to-accent">
                 {personalInfo.name}
             </h1>
