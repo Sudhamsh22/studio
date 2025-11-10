@@ -2,7 +2,7 @@
 import { personalInfo } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import Image from 'next/image';
 
 export function Hero({ id }: { id: string }) {
@@ -32,6 +32,12 @@ export function Hero({ id }: { id: string }) {
                     ))}
                      <Button asChild size="lg">
                         <Link href="#contact">Contact Me</Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline">
+                        <Link href="/resume.pdf" download="Siva-Sudhamsh-Gandikota-Resume.pdf">
+                            <Download className="mr-2 h-5 w-5" />
+                            Download Resume
+                        </Link>
                     </Button>
                 </div>
               </div>
