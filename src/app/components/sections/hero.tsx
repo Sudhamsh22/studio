@@ -38,8 +38,8 @@ export function Hero({ id }: { id: string }) {
                 <Image
                   src="/my-photo.jpg"
                   alt="Siva Sudhamsh Gandikota"
-                  width={280}
-                  height={280}
+                  width={320}
+                  height={320}
                   className="rounded-xl border-4 border-primary/20 object-cover shadow-lg"
                   priority
                 />
