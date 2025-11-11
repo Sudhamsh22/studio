@@ -17,11 +17,8 @@ export function Experience({ id }: { id: string }) {
         <div className="space-y-12">
           {experience.map((job, index) => (
             <div key={index} className="relative w-full">
-              {/* Timeline Dot */}
-              <div className="absolute top-1 left-6 -translate-x-1/2 w-3 h-3 rounded-full bg-primary ring-4 ring-background"></div>
-
               {/* Card */}
-              <div className="md:ml-[50%] md:pl-12 ml-12 pl-6">
+              <div className="md:ml-[50%] md:pl-12 ml-12 pl-0">
                 <GlareHover
                   width="100%"
                   height="100%"
