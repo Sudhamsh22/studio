@@ -34,8 +34,6 @@ export const personalInfo = {
     'Applied-AI focused Software Engineer with strengths in backend, AI/ML, and full-stack development. I build pragmatic AI-driven features and data-based web apps using Python (FastAPI), JavaScript/TypeScript (Node.js/Next.js), and cloud (Azure/AWS). Experienced with Machine Learning, LLM-based features, authentication/authorization (JWT), RESTful APIs, microservices, CI/CD, and performance optimization.',
   contact: {
     email: 'sivasudhamsh2005@gmail.com',
-    phone: '+91 96407 62129',
-    address: 'Madhapur, Hyderabad 500081',
   },
   socials: [
     {

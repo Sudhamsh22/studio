@@ -23,13 +23,6 @@ export function Hero({ id }: { id: string }) {
                   {personalInfo.summary}
                 </p>
                 <div className="mt-8 flex justify-center md:justify-start flex-wrap gap-4">
-                    {personalInfo.socials.map((social) => (
-                        <Button key={social.name} variant="outline" size="icon" asChild>
-                            <Link href={social.url} target="_blank" aria-label={social.name}>
-                                <social.icon className="h-5 w-5" />
-                            </Link>
-                        </Button>
-                    ))}
                      <Button asChild size="lg">
                         <Link href="#contact">Contact Me</Link>
                     </Button>
