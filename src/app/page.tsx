@@ -9,11 +9,13 @@ import { Leadership } from '@/app/components/sections/leadership';
 import { Achievements } from '@/app/components/sections/achievements';
 import { Contact } from '@/app/components/sections/contact';
 import { Footer } from '@/app/components/footer';
+import DarkVeil from './components/DarkVeil';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="fixed top-0 left-0 w-full h-full z-[-1] bg-background">
+        <DarkVeil />
       </div>
       <Header />
       <main className="flex-grow">
