@@ -16,7 +16,7 @@ export function Skills({ id }: { id: string }) {
             key={category.title}
             width="100%"
             height="100%"
-            background="hsl(var(--background))"
+            background="hsl(var(--secondary))"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
