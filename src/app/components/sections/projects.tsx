@@ -24,8 +24,8 @@ export function Projects({ id }: { id: string }) {
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
-            <SpotlightCard spotlightColor="hsl(var(--primary) / 0.2)" className="h-full w-full">
-              <Card  className="flex flex-col bg-card/50 border-transparent backdrop-blur-sm transition-all h-full">
+            <SpotlightCard spotlightColor="hsl(var(--primary) / 0.1)" className="h-full w-full">
+              <Card  className="flex flex-col bg-card/50 border-transparent backdrop-blur-sm h-full">
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <CardTitle className="font-headline text-xl">{project.title}</CardTitle>

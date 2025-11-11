@@ -20,7 +20,7 @@ export function Certifications({ id }: { id: string }) {
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
-            <Card className="bg-card/50 border-transparent h-full">
+            <Card className="bg-card/50 border-transparent h-full backdrop-blur-sm">
               <CardContent className="p-4 flex items-center gap-4 h-full">
                 <div className="p-2 bg-primary/10 rounded-md">
                   <Award className="h-6 w-6 text-primary" />

@@ -22,7 +22,7 @@ export function Skills({ id }: { id: string }) {
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
-            <Card className="bg-card/50 border-transparent backdrop-blur-sm transition-all h-full">
+            <Card className="bg-card/50 border-transparent backdrop-blur-sm h-full">
               <CardHeader>
                 <CardTitle className="text-xl font-headline text-primary">{category.title}</CardTitle>
               </CardHeader>
