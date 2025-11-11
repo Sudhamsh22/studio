@@ -14,7 +14,7 @@ export function Certifications({ id }: { id: string }) {
             key={index}
             width="100%"
             height="100%"
-            background="#000"
+            background="rgba(0,0,0,0.3)"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.1)"
             glareColor="hsl(var(--primary))"
