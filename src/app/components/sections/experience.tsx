@@ -9,31 +9,24 @@ export function Experience({ id }: { id: string }) {
     <Section id={id}>
       <SectionTitle>Experience</SectionTitle>
       <div className="relative max-w-4xl mx-auto">
+        {/* Vertical timeline bar */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border"
+          className="absolute left-0 md:left-1/2 -translate-x-1/2 w-0.5 h-full bg-border"
           aria-hidden="true"
         ></div>
+
         {experience.map((job, index) => (
           <div
             key={index}
             className={cn(
-              'relative mb-12 flex items-start',
-              index % 2 === 0 ? 'md:flex-row-reverse' : ''
+              'relative mb-12 flex w-full items-start md:w-1/2',
+              index % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:pr-8'
             )}
           >
-            <div className="hidden md:block w-1/2"></div>
-            <div className="hidden md:block relative w-1/2">
-                <div className="absolute left-[-21px] top-1.5 mt-1 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10"></div>
-            </div>
-             <div className="md:hidden absolute left-0 top-1.5 mt-1 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10"></div>
-
-
-            <Card
-              className={cn(
-                'w-full md:w-1/2 relative bg-card/50 backdrop-blur-sm',
-                index % 2 === 0 ? 'md:mr-[4.5%]' : 'md:ml-[4.5%]'
-              )}
-            >
+            {/* Timeline dot */}
+            <div className="absolute left-[-7px] top-1.5 mt-1 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10 md:left-auto md:right-[-9px]" />
+            
+            <Card className="w-full relative bg-card/50 backdrop-blur-sm ml-8 md:ml-0">
               <CardHeader>
                 <div className="flex justify-between items-start gap-2">
                   <div>
