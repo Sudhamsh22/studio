@@ -17,7 +17,7 @@ export function Projects({ id }: { id: string }) {
             key={project.title}
             width="100%"
             height="100%"
-            background="hsl(var(--secondary) / 0.5)"
+            background="#000"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.1)"
             glareColor="hsl(var(--primary))"
