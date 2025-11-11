@@ -14,7 +14,7 @@ export function Leadership({ id }: { id: string }) {
             key={index}
             width="100%"
             height="100%"
-            background="hsl(var(--card))"
+            background="hsl(var(--background))"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
