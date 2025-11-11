@@ -9,12 +9,14 @@ import { Leadership } from '@/app/components/sections/leadership';
 import { Achievements } from '@/app/components/sections/achievements';
 import { Contact } from '@/app/components/sections/contact';
 import { Footer } from '@/app/components/footer';
-import Hyperspeed, { hyperspeedPresets } from '@/app/components/hyperspeed';
+import DarkVeil from '@/app/components/DarkVeil';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Hyperspeed effectOptions={hyperspeedPresets.one} />
+      <div className="fixed top-0 left-0 w-full h-full z-[-1]">
+        <DarkVeil />
+      </div>
       <Header />
       <main className="flex-grow">
         <Hero id="home" />
