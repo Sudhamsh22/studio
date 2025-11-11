@@ -12,14 +12,16 @@ export function Experience({ id }: { id: string }) {
       <div className="relative max-w-3xl mx-auto px-4">
         
         {/* Vertical timeline bar */}
-        <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-0.5 bg-border/40"></div>
+        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 -translate-x-1/2 w-0.5 bg-border/40"></div>
 
         <div className="space-y-12">
           {experience.map((job, index) => (
-            <div key={index} className="relative flex justify-center w-full">
+            <div key={index} className="relative w-full">
+              {/* Timeline Dot */}
+              <div className="absolute top-1 left-6 -translate-x-1/2 w-3 h-3 rounded-full bg-primary ring-4 ring-background"></div>
 
               {/* Card */}
-              <div className="w-full md:w-2/3">
+              <div className="md:ml-[50%] md:pl-12 ml-12 pl-6">
                 <GlareHover
                   width="100%"
                   height="100%"
@@ -31,12 +33,12 @@ export function Experience({ id }: { id: string }) {
                 >
                   <Card className="w-full bg-transparent border-transparent shadow-none backdrop-blur-md">
                     <CardHeader>
-                      <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-start justify-between gap-2 flex-wrap">
                         <div>
                           <CardTitle className="font-headline text-xl">{job.role}</CardTitle>
                           <CardDescription className="text-base text-foreground/80">{job.company}</CardDescription>
                         </div>
-                        <p className="text-sm text-muted-foreground whitespace-nowrap">{job.period}</p>
+                        <p className="text-sm text-muted-foreground whitespace-nowrap pt-1">{job.period}</p>
                       </div>
                     </CardHeader>
 
