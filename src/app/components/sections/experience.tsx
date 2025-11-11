@@ -48,8 +48,8 @@ export function Experience({ id }: { id: string }) {
                 >
                   <Card className="w-full bg-transparent border-transparent">
                     <CardHeader>
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="text-left">
+                      <div className="flex items-start justify-between gap-2 text-left">
+                        <div className="flex-1">
                           <CardTitle className="font-headline text-xl">{job.role}</CardTitle>
                           <CardDescription className="text-base text-foreground/80">{job.company}</CardDescription>
                         </div>
