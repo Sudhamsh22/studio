@@ -8,7 +8,7 @@ import Image from 'next/image';
 export function Hero({ id }: { id: string }) {
   return (
     <section id={id} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-transparent"></div>
+        <div className="absolute inset-0 bg-transparent"></div>
 
         <div className="relative z-10 flex flex-col items-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 max-w-6xl mx-auto">
