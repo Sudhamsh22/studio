@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 import { personalInfo, navigation } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import StarBorder from './StarBorder';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,13 +37,15 @@ export function Header() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navigation.map((item) => (
-                <Link
+                <StarBorder
                   key={item.name}
+                  as={Link}
                   href={item.href}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/50 hover:text-accent-foreground transition-colors"
+                  className="text-sm font-medium"
+                  color="hsl(var(--primary))"
                 >
                   {item.name}
-                </Link>
+                </StarBorder>
               ))}
             </div>
           </div>
