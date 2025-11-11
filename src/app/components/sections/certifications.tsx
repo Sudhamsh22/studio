@@ -14,13 +14,13 @@ export function Certifications({ id }: { id: string }) {
             key={index}
             width="100%"
             height="100%"
-            background="transparent"
+            background="hsl(var(--card))"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
-            <Card className="bg-card/50 border-transparent h-full backdrop-blur-sm">
+            <Card className="bg-transparent border-transparent h-full">
               <CardContent className="p-4 flex items-center gap-4 h-full">
                 <div className="p-2 bg-primary/10 rounded-md">
                   <Award className="h-6 w-6 text-primary" />

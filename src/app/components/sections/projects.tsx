@@ -13,8 +13,8 @@ export function Projects({ id }: { id: string }) {
       <SectionTitle>Featured Projects</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <SpotlightCard key={project.title} spotlightColor="hsl(var(--primary) / 0.1)" className="h-full w-full bg-card/50 rounded-lg border border-border/50 backdrop-blur-sm">
-            <Card className="flex flex-col bg-transparent border-transparent h-full">
+          <SpotlightCard key={project.title} spotlightColor="hsl(var(--primary) / 0.1)" className="h-full">
+            <Card className="flex flex-col h-full bg-card/50 border-border/50 backdrop-blur-sm">
               <CardHeader>
                   <div className="flex justify-between items-center">
                       <CardTitle className="font-headline text-xl">{project.title}</CardTitle>

@@ -16,13 +16,13 @@ export function Skills({ id }: { id: string }) {
             key={category.title}
             width="100%"
             height="100%"
-            background="transparent"
+            background="hsl(var(--card))"
             borderRadius="var(--radius)"
             borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
-            <Card className="bg-card/50 border-transparent backdrop-blur-sm h-full">
+            <Card className="bg-transparent border-transparent h-full">
               <CardHeader>
                 <CardTitle className="text-xl font-headline text-primary">{category.title}</CardTitle>
               </CardHeader>
