@@ -17,11 +17,11 @@ export function Projects({ id }: { id: string }) {
             key={project.title}
             width="100%"
             height="100%"
-            background="hsl(var(--secondary))"
+            background="hsl(var(--secondary) / 0.5)"
             borderRadius="var(--radius)"
-            borderColor="hsl(var(--border) / 0.5)"
+            borderColor="hsl(var(--border) / 0.1)"
             glareColor="hsl(var(--primary))"
-            glareOpacity={0.1}
+            glareOpacity={0.05}
             className="h-full"
           >
             <Card className="flex flex-col h-full bg-transparent border-transparent">
