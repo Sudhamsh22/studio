@@ -36,6 +36,11 @@ vec3 hueShiftRGB(vec3 col,float deg){
     return clamp(yiq2rgb*yiqShift,0.0,1.0);
 }
 
+vec3 desaturate(vec3 color, float amount) {
+  float gray = dot(color, vec3(0.299, 0.587, 0.114));
+  return mix(color, vec3(gray), amount);
+}
+
 vec4 sigmoid(vec4 x){return 1./(1.+exp(-x));}
 
 vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
@@ -68,6 +73,7 @@ void mainImage(out vec4 fragColor,in vec2 fragCoord){
 void main(){
     vec4 col;mainImage(col,gl_FragCoord.xy);
     col.rgb=hueShiftRGB(col.rgb,uHueShift);
+    col.rgb = desaturate(col.rgb, 1.0);
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
