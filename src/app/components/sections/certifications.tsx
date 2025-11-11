@@ -16,7 +16,7 @@ export function Certifications({ id }: { id: string }) {
             height="100%"
             background="transparent"
             borderRadius="var(--radius)"
-            borderColor="hsl(var(--border))"
+            borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >

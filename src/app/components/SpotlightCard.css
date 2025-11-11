@@ -1,6 +1,6 @@
 .card-spotlight {
   position: relative;
-  border-radius: var(--radius);
+  /* Defaults removed to be controlled by parent */
   background-color: transparent;
   overflow: hidden;
   --mouse-x: 50%;

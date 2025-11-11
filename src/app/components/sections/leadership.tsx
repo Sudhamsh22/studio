@@ -8,7 +8,7 @@ export function Leadership({ id }: { id: string }) {
   return (
     <Section id={id}>
       <SectionTitle>Leadership &amp; Activities</SectionTitle>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto space-y-8">
         {leadership.map((item, index) => (
           <GlareHover
             key={index}
@@ -16,7 +16,7 @@ export function Leadership({ id }: { id: string }) {
             height="100%"
             background="transparent"
             borderRadius="var(--radius)"
-            borderColor="hsl(var(--border))"
+            borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >

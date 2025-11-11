@@ -18,7 +18,7 @@ export function Skills({ id }: { id: string }) {
             height="100%"
             background="transparent"
             borderRadius="var(--radius)"
-            borderColor="hsl(var(--border))"
+            borderColor="hsl(var(--border) / 0.5)"
             glareColor="hsl(var(--primary))"
             glareOpacity={0.1}
           >
@@ -29,7 +29,7 @@ export function Skills({ id }: { id: string }) {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {category.items.map((skill) => (
-                    <Badge key={skill.name} variant="secondary" className="flex items-center gap-2 text-sm font-normal border-transparent bg-secondary/50">
+                    <Badge key={skill.name} variant="secondary" className="flex items-center gap-2 text-sm font-normal">
                       {skill.icon && <skill.icon className="h-4 w-4 text-foreground/70" />}
                       <span>{skill.name}</span>
                     </Badge>
