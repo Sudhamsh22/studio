@@ -18,9 +18,6 @@ export function Experience({ id }: { id: string }) {
           {experience.map((job, index) => (
             <div key={index} className="relative flex justify-center w-full">
 
-              {/* Dot on timeline */}
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10" />
-
               {/* Card */}
               <div className="w-full md:w-2/3">
                 <GlareHover
